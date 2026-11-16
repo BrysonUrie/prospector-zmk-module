@@ -7,6 +7,7 @@
 #include <zmk/keymap.h>
 
 #include <fonts.h>
+#include <theme.h>
 
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
@@ -81,17 +82,17 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
 
     static lv_style_t style;
     lv_style_init(&style);
-    lv_style_set_bg_color(&style, lv_color_black());
-    lv_style_set_text_color(&style, lv_color_white());
+    lv_style_set_bg_color(&style, lv_color_hex(THEME_BG));
+    lv_style_set_text_color(&style, lv_color_hex(THEME_LAYER_INACTIVE));
     lv_style_set_border_width(&style, 0);
     lv_style_set_pad_all(&style, 0);
 
     lv_obj_add_style(widget->obj, &style, 0);
     lv_obj_set_style_bg_opa(widget->obj, LV_OPA_TRANSP, LV_PART_SELECTED);
     lv_obj_set_style_text_font(widget->obj, &FRAC_Regular_48, LV_PART_SELECTED);
-    lv_obj_set_style_text_color(widget->obj, lv_color_hex(0xffffff), LV_PART_SELECTED);
+    lv_obj_set_style_text_color(widget->obj, lv_color_hex(THEME_LAYER_ACTIVE), LV_PART_SELECTED);
     lv_obj_set_style_text_font(widget->obj, &FRAC_Thin_48, LV_PART_MAIN);
-    lv_obj_set_style_text_color(widget->obj, lv_color_hex(0x909090), LV_PART_MAIN);
+    lv_obj_set_style_text_color(widget->obj, lv_color_hex(THEME_LAYER_INACTIVE), LV_PART_MAIN);
 
     int32_t fade_height = 40;
 
@@ -99,9 +100,9 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
     lv_obj_remove_style_all(fade_top);
     lv_obj_set_size(fade_top, LV_PCT(100), fade_height);
     lv_obj_align(fade_top, LV_ALIGN_TOP_MID, 0, 0);
-    lv_obj_set_style_bg_color(fade_top, lv_color_black(), 0);
+    lv_obj_set_style_bg_color(fade_top, lv_color_hex(THEME_BG), 0);
     lv_obj_set_style_bg_opa(fade_top, LV_OPA_COVER, 0);
-    lv_obj_set_style_bg_grad_color(fade_top, lv_color_black(), 0);
+    lv_obj_set_style_bg_grad_color(fade_top, lv_color_hex(THEME_BG), 0);
     lv_obj_set_style_bg_grad_dir(fade_top, LV_GRAD_DIR_VER, 0);
     lv_obj_set_style_opa(fade_top, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_main_opa(fade_top, LV_OPA_COVER, 0);
@@ -112,9 +113,9 @@ int zmk_widget_layer_roller_init(struct zmk_widget_layer_roller *widget, lv_obj_
     lv_obj_remove_style_all(fade_bottom);
     lv_obj_set_size(fade_bottom, LV_PCT(100), fade_height);
     lv_obj_align(fade_bottom, LV_ALIGN_BOTTOM_MID, 0, 0);
-    lv_obj_set_style_bg_color(fade_bottom, lv_color_black(), 0);
+    lv_obj_set_style_bg_color(fade_bottom, lv_color_hex(THEME_BG), 0);
     lv_obj_set_style_bg_opa(fade_bottom, LV_OPA_COVER, 0);
-    lv_obj_set_style_bg_grad_color(fade_bottom, lv_color_black(), 0);
+    lv_obj_set_style_bg_grad_color(fade_bottom, lv_color_hex(THEME_BG), 0);
     lv_obj_set_style_bg_grad_dir(fade_bottom, LV_GRAD_DIR_VER, 0);
     lv_obj_set_style_opa(fade_bottom, LV_OPA_COVER, 0);
     lv_obj_set_style_bg_main_opa(fade_bottom, LV_OPA_TRANSP, 0);

@@ -2,13 +2,16 @@ config PROSPECTOR_LAYER_ROLLER_ALL_CAPS
     bool "Convert layer names to all caps"
     default n
 
+config PROSPECTOR_BATTERY_SWAP_SIDES
+    bool "Show the first-paired half's battery on the right"
+    default n
+    help
+      The dongle numbers the halves in the order they paired. By default the first
+      one is shown as L. Enable this if the right half paired first.
+
 config PROSPECTOR_ROTATE_DISPLAY_180
     bool "Rotate the display 180 degrees"
     default n
-
-config PROSPECTOR_SHOW_MODIFIERS
-    bool "Display modifier key indicators (Cmd, Opt, Ctrl, Shift)"
-    default y
 
 config PROSPECTOR_USE_AMBIENT_LIGHT_SENSOR
     bool "Use ambient light sensor for auto brightness"
